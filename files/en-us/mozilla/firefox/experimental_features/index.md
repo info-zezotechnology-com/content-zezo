@@ -824,6 +824,50 @@ The CSS {{cssxref("::details-content")}} pseudo-element enables you to style the
   </tbody>
 </table>
 
+### Allow pseudo-elements after element-backed pseudo-elements
+
+Work has started on allowing [pseudo-elements](/en-US/docs/Web/CSS/Pseudo-elements) such as {{cssxref("::first-letter")}} and {{cssxref("::before")}} to be appended to [element-backed pseudo-elements](/en-US/docs/Web/CSS/Pseudo-elements#element-backed_pseudo-elements) such as {{cssxref("::details-content")}} and {{cssxref("::file-selector-button")}}.
+
+This will allow users to, for , example, style the first letter of the {{htmlElement("details")}} element by using the CSS selector `::details-content::first-letter` or add content before a {{HTMLElement("input") }} of [`type="file"`](/en-US/docs/Web/HTML/Reference/Elements/input/file) using the CSS selector `::file-selector-button::before`.
+
+Currently only support for `::details-content::first-letter` can be parsed, using `@supports(::details-content::first-letter)` and the preference for [::details-content pseudo-element](#details-content_pseudo-element) needs enabling for this to be tested. The `::file-selector-button` pseudo-element is not yet marked as an element-based pseudo-element so there is no current way of testing this. ([Firefox bug 1953557](https://bugzil.la/1953557)).
+
+<table>
+  <thead>
+    <tr>
+      <th>Release channel</th>
+      <th>Version added</th>
+      <th>Enabled by default?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Nightly</th>
+      <td>138</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>Developer Edition</th>
+      <td>138</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>Beta</th>
+      <td>138</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>Release</th>
+      <td>138</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>Preference name</th>
+      <td colspan="2"><code>layout.css.details-content.enabled</code></td>
+    </tr>
+  </tbody>
+</table>
+
 ## SVG
 
 ### `<discard>` element for SVG animations
@@ -905,18 +949,18 @@ This includes:
     </tr>
     <tr>
       <th>Developer Edition</th>
-      <td>—</td>
-      <td>—</td>
+      <td>137</td>
+      <td>No</td>
     </tr>
     <tr>
       <th>Beta</th>
-      <td>—</td>
-      <td>—</td>
+      <td>137</td>
+      <td>No</td>
     </tr>
     <tr>
       <th>Release</th>
-      <td>—</td>
-      <td>—</td>
+      <td>137</td>
+      <td>No</td>
     </tr>
     <tr>
       <th>Preference name</th>
@@ -1024,6 +1068,89 @@ This subset of the API has been implemented:
   </tbody>
 </table>
 
+### HTML Sanitizer API
+
+The [HTML Sanitizer API](/en-US/docs/Web/API/HTML_Sanitizer_API) allow developers to take untrusted strings of HTML and sanitize them for safe insertion into a document's DOM.
+
+<table>
+  <thead>
+    <tr>
+      <th>Release channel</th>
+      <th>Version added</th>
+      <th>Enabled by default?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Nightly</th>
+      <td>138</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>Developer Edition</th>
+      <td>138</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>Beta</th>
+      <td>138</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>Release</th>
+      <td>138</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>Preference name</th>
+      <td colspan="2"><code>dom.security.sanitizer.enabled</code></td>
+    </tr>
+  </tbody>
+</table>
+
+### Escape < and > in attributes when serializing HTML
+
+Firefox replaces the `<` and `>` characters with `&lt;` and `&gt;` (respectively) in attributes when serializing HTML.
+This prevents certain exploits where HTML is serialized and then injected back into the DOM.
+The affected methods and properties are: {{domxref("Element.innerHTML")}}, {{domxref("Element.outerHTML")}}, {{domxref("Element.getHTML()")}}, {{domxref("ShadowRoot.innerHTML")}}, and {{domxref("ShadowRoot.getHTML()")}}.
+([Firefox bug 1941347](https://bugzil.la/1941347)).
+
+<table>
+  <thead>
+    <tr>
+      <th>Release channel</th>
+      <th>Version added</th>
+      <th>Enabled by default?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Nightly</th>
+      <td>139</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <th>Developer Edition</th>
+      <td>139</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>Beta</th>
+      <td>139</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>Release</th>
+      <td>139</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>Preference name</th>
+      <td colspan="2"><code>dom.security.html_serialization_escape_lt_gt</code></td>
+    </tr>
+  </tbody>
+</table>
+
 ### Removal of MutationEvent
 
 {{domxref("MutationEvent")}} and its associated events (`DOMSubtreeModified`, `DOMNodeInserted`, `DOMNodeRemoved`, `DOMCharacterDataModified`, `DOMAttrModified`) are on the path for removal, and have been disabled on nightly.
@@ -1065,6 +1192,87 @@ This subset of the API has been implemented:
   </tbody>
 </table>
 
+### Removal of `beforescriptexecute` and `afterscriptexecute` events
+
+The non-standard events [`beforescriptexecute`](/en-US/docs/Web/API/Document/beforescriptexecute_event) and [`afterscriptexecute`](/en-US/docs/Web/API/Document/afterscriptexecute_event) on the {{domxref("Document")}} interface, and [`afterscriptexecute`](/en-US/docs/Web/API/Element/afterscriptexecute_event) and [`beforescriptexecute`](/en-US/docs/Web/API/Element/beforescriptexecute_event) on the {{domxref("Element")}} interface are on the path to removal. They have been disabled in Nightly.
+([Firefox bug 1954685](https://bugzil.la/1954685)).
+
+<table>
+  <thead>
+    <tr>
+      <th>Release channel</th>
+      <th>Version added</th>
+      <th>Enabled by default?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Nightly</th>
+      <td>139</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>Developer Edition</th>
+      <td>139</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <th>Beta</th>
+      <td>139</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <th>Release</th>
+      <td>139</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <th>Preference name</th>
+      <td colspan="2"><code>dom.events.script_execute.enable</code></td>
+    </tr>
+  </tbody>
+</table>
+
+### PerformanceEventTiming.interactionId
+
+{{domxref("PerformanceEventTiming.interactionId")}} can be used to measure latency timing for events triggered by a particular user interaction. ([Firefox bug 1934683](https://bugzil.la/1934683)).
+
+<table>
+  <thead>
+    <tr>
+      <th>Release channel</th>
+      <th>Version added</th>
+      <th>Enabled by default?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Nightly</th>
+      <td>138</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>Developer Edition</th>
+      <td>138</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>Beta</th>
+      <td>138</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>Release</th>
+      <td>138</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>Preference name</th>
+      <td colspan="2"><code>dom.performance.event_timing.enable_interactionid</code></td>
+    </tr>
+  </tbody>
+</table>
+
 ### Notification.actions
 
 The {{domxref("Notification.actions","actions")}} read-only property of the {{domxref("Notification")}} interface is supported in Nightly.
@@ -1083,7 +1291,6 @@ This contains notification actions set with {{domxref("ServiceWorkerRegistration
     <tr>
       <th>Nightly</th>
       <td>138</td>
-      <td>Yes</td>
     </tr>
     <tr>
       <th>Developer Edition</th>
@@ -1723,10 +1930,10 @@ See [Firefox bug 1697647](https://bugzil.la/1697647) for more details.
 
 ### Prioritized Task Scheduling API
 
-The [Prioritized Task Scheduling API](/en-US/docs/Web/API/Prioritized_Task_Scheduling_API) provides a standardized way to prioritize all tasks belonging to an application, whether they defined in a website developer's code, or in third party libraries and frameworks. ([Firefox bug 1734997](https://bugzil.la/1734997))
-
-This feature was enabled on Firefox Nightly in Firefox 101.
-Support in Firefox Nightly 135 has been temporarily disabled in order to avoid [breakage in-the-wild](https://bugzil.la/1937232).
+The [Prioritized Task Scheduling API](/en-US/docs/Web/API/Prioritized_Task_Scheduling_API) provides a standardized way to prioritize all tasks belonging to an application, whether they are defined in a website developer's code, or in third-party libraries and frameworks.
+Support for most of the API was added behind a preference in Firefox version 101.
+Firefox version 139 adds support for {{domxref("scheduler.yield()")}} and enables the API in the Nightly release.
+([Firefox bug 1734997](https://bugzil.la/1734997) and [Firefox bug 1920115](https://bugzil.la/1920115)).
 
 <table>
   <thead>
@@ -1739,8 +1946,8 @@ Support in Firefox Nightly 135 has been temporarily disabled in order to avoid [
   <tbody>
     <tr>
       <th>Nightly</th>
-      <td>101</td>
-      <td>No</td>
+      <td>139</td>
+      <td>Yes</td>
     </tr>
     <tr>
       <th>Developer Edition</th>
@@ -2106,47 +2313,6 @@ For more details see [Firefox bug 1687364](https://bugzil.la/1687364).
     <tr>
       <th>Preference name</th>
       <td colspan="2"><code>network.cors_preflight.authorization_covered_by_wildcard</code></td>
-    </tr>
-  </tbody>
-</table>
-
-### Clear-Site-Data: cache can clear the browser cache
-
-The [`Clear-Site-Data`](/en-US/docs/Web/HTTP/Reference/Headers/Clear-Site-Data) can be used with the [`cache`](/en-US/docs/Web/HTTP/Reference/Headers/Clear-Site-Data#cache) or `*` directives to clear the local browser cache.
-For more details see [Firefox bug 1942272](https://bugzil.la/1942272).
-
-<table>
-  <thead>
-    <tr>
-      <th>Release channel</th>
-      <th>Version added</th>
-      <th>Enabled by default?</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Nightly</th>
-      <td>136</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <th>Developer Edition</th>
-      <td>136</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <th>Beta</th>
-      <td>136</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <th>Release</th>
-      <td>136</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <th>Preference name</th>
-      <td colspan="2"><code>privacy.clearSiteDataHeader.cache.enabled</code></td>
     </tr>
   </tbody>
 </table>

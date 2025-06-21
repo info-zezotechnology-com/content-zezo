@@ -135,7 +135,7 @@ If the image is really large and therefore doesn't fit on the screen, don't worr
 This section will cover some essential HTML elements you'll use for marking up text.
 
 > [!NOTE]
-> Scrimba's [The basics of semantic HTML](https://v2.scrimba.com/the-frontend-developer-career-path-c0j/~0xid?via=mdn) <sup>[_MDN learning partner_](/en-US/docs/MDN/Writing_guidelines/Learning_content#partner_links_and_embeds)</sup> is an interactive lesson providing a useful description of HTML, with particular emphasis on why the _semantic_ aspect of it is important.
+> Scrimba's [The basics of semantic HTML](https://scrimba.com/the-frontend-developer-career-path-c0j/~0xid?via=mdn) <sup>[_MDN learning partner_](/en-US/docs/MDN/Writing_guidelines/Learning_content#partner_links_and_embeds)</sup> is an interactive lesson providing a useful description of HTML, with particular emphasis on why the _semantic_ aspect of it is important.
 
 ### Headings
 
@@ -152,7 +152,7 @@ Heading elements allow you to specify that certain parts of your content are hea
 > [!NOTE]
 > Anything in HTML between `<!--` and `-->` is an **HTML comment**. The browser ignores comments as it renders the code. In other words, they are not visible on the page — just in the code. HTML comments are a way for you to add notes about your code or logic, which might be useful to others working on the same code, or you, if you came back to it after 6 months and can't remember what you did.
 
-Now try adding a suitable main title to your HTML page just above your {{htmlelement("img")}} element. Save the file and view it in a browser to see the effect.
+Add your page title to the HTML page just above your {{htmlelement("img")}} element, wrapped inside `<h1> ... </h1>` tags. Save the file and view it in a browser to see the effect.
 
 ### Paragraphs
 
@@ -241,7 +241,7 @@ Here, we have only really scratched the surface of HTML. You'll learn a lot more
 
 ## See also
 
-- [Learn HTML and CSS](https://v2.scrimba.com/learn-html-and-css-c0p?via=mdn), Scrimba <sup>[_MDN learning partner_](/en-US/docs/MDN/Writing_guidelines/Learning_content#partner_links_and_embeds)</sup>
+- [Learn HTML and CSS](https://scrimba.com/learn-html-and-css-c0p?via=mdn), Scrimba <sup>[_MDN learning partner_](/en-US/docs/MDN/Writing_guidelines/Learning_content#partner_links_and_embeds)</sup>
   - : [Scrimba's](https://scrimba.com?via=mdn) _Learn HTML and CSS_ course teaches you HTML and CSS through building and deploying five awesome projects, with fun interactive lessons and challenges taught by knowledgeable teachers.
 
 {{PreviousMenuNext("Learn_web_development/Getting_started/Your_first_website/What_will_your_website_look_like", "Learn_web_development/Getting_started/Your_first_website/Styling_the_content", "Learn_web_development/Getting_started/Your_first_website")}}

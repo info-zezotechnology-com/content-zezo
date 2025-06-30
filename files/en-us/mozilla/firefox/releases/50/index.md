@@ -21,7 +21,7 @@ Firefox 50 was released on November 15, 2016. This article lists key changes tha
 
 - Corners with border-radius and with dashed and dotted styles are now rendered with the specified style instead of a solid style ([Firefox bug 382721](https://bugzil.la/382721)).
 - The non-standard `:-moz-full-screen-ancestor` pseudo-class selector has been removed ([Firefox bug 1199529](https://bugzil.la/1199529)).
-- The {{cssxref("box-sizing")}}`: padding-box` has been removed, since it's no longer a part of the spec and Firefox was the only major browser implementing it ([Firefox bug 1166728](https://bugzil.la/1166728)).
+- The {{cssxref("box-sizing", "box-sizing: padding-box")}} has been removed, since it's no longer a part of the spec and Firefox was the only major browser implementing it ([Firefox bug 1166728](https://bugzil.la/1166728)).
 - The three values `isolate`, `isolate-override`, and `plaintext` of the {{cssxref("unicode-bidi")}} property have been unprefixed ([Firefox bug 1141895](https://bugzil.la/1141895)).
 - In quirks mode, the bullet of a list item now inherits the size of the list, like in standards mode ([Firefox bug 648331](https://bugzil.la/648331)).
 - The {{cssxref(":in-range")}} and {{cssxref(":out-of-range")}} pseudo-classes have changed behavior to not match disabled or read-only inputs ([Firefox bug 1264157](https://bugzil.la/1264157)).
@@ -128,10 +128,8 @@ Firefox 50 was released on November 15, 2016. This article lists key changes tha
 ### Files and directories
 
 - A subset of the [File and Directory Entries API](/en-US/docs/Web/API/File_and_Directory_Entries_API) has been implemented, to improve compatibility with sites that were previously only compatible with Google Chrome ([Firefox bug 1265767](https://bugzil.la/1265767)).
-
   - The asynchronous API interfaces have been implemented, with the caveat that only reading of files is supported; for example, the {{domxref("FileSystemFileEntry.createWriter()")}} method is a no-op.
   - These interfaces have been implemented:
-
     - {{domxref("FileSystem")}}
     - {{domxref("FileSystemEntry")}} (properties only; the methods have not been implemented)
     - {{domxref("FileSystemFileEntry")}} (except for {{domxref("FileSystemFileEntry.createWriter", "createWriter()")}})

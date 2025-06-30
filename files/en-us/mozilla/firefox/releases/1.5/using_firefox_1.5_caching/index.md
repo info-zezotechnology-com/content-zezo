@@ -13,7 +13,6 @@ There are instances in which Firefox doesn't cache pages. Below are some common 
 - the page uses an `unload` or `beforeunload` handler;
 - the page sets "cache-control: no-store".
 - the site is HTTPS and page sets at least one of:
-
   - "Cache-Control: no-cache"
   - "Pragma: no-cache"
   - with "Expires: 0" or "Expires" with a date value in the past relative to the value of the "Date" header (unless "Cache-Control: max-age=" is also specified);
@@ -100,7 +99,7 @@ In this example:
       }
 
       function onPageShow() {
-        //calculate current time
+        // Calculate current time
         var currentTime = new Date();
         var year = currentTime.getFullYear();
         var month = currentTime.getMonth() + 1;
@@ -123,7 +122,7 @@ In this example:
           sec +
           ":" +
           mil;
-        document.getElementById("timefield").value = displayTime;
+        document.getElementById("time-field").value = displayTime;
       }
 
       function loadOnlyFirst() {
@@ -138,8 +137,8 @@ In this example:
       name="zipForm"
       action="http://www.example.com/formresult.html"
       method="get">
-      <label for="timefield">Date and time:</label>
-      <input type="text" id="timefield" /><br />
+      <label for="time-field">Date and time:</label>
+      <input type="text" id="time-field" /><br />
       <label for="name">Name:</label>
       <input type="text" id="name" /><br />
       <label for="address">Email address:</label>
@@ -160,7 +159,7 @@ In contrast, if the above page did not listen for the `pageshow` event and handl
     function onLoad() {
       loadOnlyFirst();
 
-      //calculate current time
+      // Calculate current time
       var currentTime = new Date();
       var year = currentTime.getFullYear();
       var month = currentTime.getMonth() + 1;
@@ -183,7 +182,7 @@ In contrast, if the above page did not listen for the `pageshow` event and handl
         sec +
         ":" +
         mil;
-      document.getElementById("timefield").value = displayTime;
+      document.getElementById("time-field").value = displayTime;
     }
 
     function loadOnlyFirst() {

@@ -2,9 +2,8 @@
 title: Firefox 6 for developers
 slug: Mozilla/Firefox/Releases/6
 page-type: firefox-release-notes
+sidebar: firefox
 ---
-
-{{FirefoxSidebar}}
 
 Firefox 6, based on Gecko 6.0, was released on August 16, 2011. This article provides links to information about the changes that affect developers in this release.
 
@@ -34,7 +33,7 @@ Firefox 6, based on Gecko 6.0, was released on August 16, 2011. This article pro
 - {{ cssxref("-moz-orient", "-moz-orient") }}
   - : A new (currently Mozilla-specific) property which lets you control the vertical or horizontal orientation of certain elements (particularly {{ HTMLElement("progress") }}).
 - {{ cssxref("::-moz-progress-bar") }}
-  - : A Mozilla-specific pseudo-element that lets you style the area of an {{ HTMLElement("progress") }} element representing the completed portion of a task.
+  - : A Mozilla-specific pseudo-element that lets you style the area of a {{ HTMLElement("progress") }} element representing the completed portion of a task.
 
 #### Other changes
 
